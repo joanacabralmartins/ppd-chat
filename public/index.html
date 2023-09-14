@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Chat</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
-    <div class="join-container">
+<body>
+    <div class="page" id="loginPage">
         <main class="join-main">
-            <form action="chat.html">
-                <div class="form-control">
-                    <label for="nome">Qual seu nome?</label>
-                    <input
-                        type="text"
-                        name="nome"
-                        id="nome"
-                        required
-                    />
-                </div>
-                <div class="form-control">
-                    <label for="room">Salas Disponíveis:</label>
-                    <select name="room" id="room">
-                        <option value="cafeVirtual">Café Virtual</option>
-                        <option value="discussaoGeral">Discussão Geral</option>
-                        <option value="desenvolvedores">Desenvolvedores</option>
-                        <option value="musica">Música</option>
-                        <option value="noticias">Notícias</option>
-                        <option value="estudos">Estudos</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Entrar na sala</button>
-            </form>
+            <div class="form-control">
+                <label for="nome">Qual seu nome?</label>
+                <input type="text" id="loginNameInput" />
+            </div>
+
+            <div class="form-control">
+                <label for="room">Salas Disponíveis:</label>
+                <select name="room" id="room">
+                    <option value="cafeVirtual">Café Virtual</option>
+                    <option value="discussaoGeral">Discussão Geral</option>
+                    <option value="desenvolvedores">Desenvolvedores</option>
+                    <option value="musica">Música</option>
+                    <option value="noticias">Notícias</option>
+                    <option value="estudos">Estudos</option>
+                </select>
+            </div>
+
+            <button id="joinButton" class="btn">Entrar na sala</button>
         </main>
     </div>
-    
+
     <div class="page" id="chatPage">
         <div class="chatArea">
             <ul class="chatList"></ul>
@@ -48,4 +44,5 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/main.js"></script>
 </body>
+
 </html>

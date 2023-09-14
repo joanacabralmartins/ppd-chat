@@ -1,150 +1,139 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+margin: 0;
+font-family: Arial, sans-serif;
 }
 
 ul,
 li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+margin: 0;
+padding: 0;
+list-style: none;
 }
 
 .btn {
-	cursor: pointer;
-	padding: 5px 15px;
-	background-color: #1ecdc5;
-  border: 0;
-  border-radius: 10px;
-  padding: 10px;
-  color: #fff;
-  font-size: 15px;
+cursor: pointer;
+padding: 5px 15px;
+background-color: #1ecdc5;
+border: 0;
+border-radius: 10px;
+padding: 10px;
+color: #fff;
+font-size: 15px;
 }
 
 .page {
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#loginPage {
-  display: flex;
-  background-color: #fff;
+height: 100vh;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: #fff;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #loginNameInput {
-  border: 2px solid #000;
-  background-color: #ccc;
-  font-size: 18px;
-  padding: 10px;
-  border-radius: 5px;
-  outline: 0;
-  width: 100%;
-  max-width: 400px;
+border: 2px solid #000;
+font-size: 18px;
+padding: 10px;
+border-radius: 5px;
+outline: 0;
+width: 100%;
+max-width: 400px;
 }
 
 #chatPage {
-  display: none;
+display: none;
 }
 
 .chatArea {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  background-color: #ccc;
+flex: 1;
+width: 100%;
+display: flex;
+background-color: #ccc;
 }
 .chatList {
-  flex: 1;
-  background-color: #fff;
-  overflow-y: scroll;
-  max-height: calc(100vh - 40px);
+flex: 1;
+background-color: #fff;
+overflow-y: scroll;
+max-height: calc(100vh - 40px);
 }
 .chatList li {
-  padding: 3px;
-  font-size: 15px;
+padding: 3px;
+font-size: 15px;
 }
 .chatList li.m-status {
-  color: #333;
-  font-style: italic;
+color: #333;
+font-style: italic;
 }
 .chatList li.m-txt span {
-  font-weight: bold;
-  color: #0000ff;
+font-weight: bold;
+color: #0000ff;
 }
 .chatList li.m-txt span.me {
-  color: #ff0000;
+color: #ff0000;
 }
 
 .userList {
-  width: 200px;
-  background-color: #ccc;
-  overflow-y: scroll;
-  max-height: calc(100vh - 40px);
+width: 200px;
+background-color: #ccc;
+overflow-y: scroll;
+max-height: calc(100vh - 40px);
 }
 .userList li {
-  padding: 5px;
-  font-size: 15px;
+padding: 5px;
+font-size: 15px;
 }
 
 .chatInput {
-  width: 100%;
-  display: flex;
+width: 100%;
+display: flex;
 }
 #chatTextInput {
-  flex: 1;
-  height: 40px;
-  padding: 0 10px;
-  font-size: 15px;
-  background-color: #ccc;
-  outline: 0;
-  border: 0;
+flex: 1;
+height: 40px;
+padding: 0 10px;
+font-size: 15px;
+background-color: #ccc;
+outline: 0;
+border: 0;
 }
 
-.join-container {
-	max-width: 500px;
-	margin: 80px auto;
-}
+/* JOIN */
 
 .join-main {
-	padding: 30px 40px;
-	background: var(--dark-color-b);
+padding: 30px 40px;
+background: var(--dark-color-b);
 }
 
 .join-main p {
-	margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .join-main .form-control {
-	margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .join-main label {
-	display: block;
-	margin-bottom: 5px;
+display: block;
+margin-bottom: 5px;
 }
 
 .join-main input[type='text'] {
-	font-size: 16px;
-	padding: 5px;
-	height: 40px;
-	width: 100%;
+font-size: 16px;
+padding: 5px;
+height: 40px;
+width: 100%;
 }
 
 .join-main select {
-	font-size: 16px;
-	padding: 5px;
-	height: 40px;
-	width: 100%;
+border: 2px solid #000;
+font-size: 16px;
+padding: 5px;
+height: 40px;
+width: 100%;
 }
 
 .join-main .btn {
-	margin-top: 20px;
-	width: 100%;
+margin-top: 20px;
+width: 100%;
 }

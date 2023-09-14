@@ -6,6 +6,7 @@ let username = '';
 let userList = [];
 
 // Seleciona elementos HTML relevantes pelo ID.
+let joinButton = document.getElementById('joinButton');
 let loginPage = document.querySelector('#loginPage');
 let chatPage = document.querySelector('#chatPage');
 let loginInput = document.querySelector('#loginNameInput');
@@ -49,17 +50,17 @@ function addMessage(type, user, msg) {
 }
 
 // Event listener para o campo de entrada de nome de usuário no formulário de login.
-loginInput.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        let name = loginInput.value.trim();
-        if (name != '') {
-            username = name;
-            document.title = 'Chat (' + username + ')';
+joinButton.addEventListener('click', () => {
+    
+    let name = loginInput.value.trim();
+    if (name != '') {
+        username = name;
+        document.title = 'Chat (' + username + ')';
 
-            // Envia uma solicitação para ingressar no chat com o nome de usuário escolhido.
-            socket.emit('join-request', username);
-        }
+        // Envia uma solicitação para ingressar no chat com o nome de usuário escolhido.
+        socket.emit('join-request', username);
     }
+    
 });
 
 // Event listener para o campo de entrada de texto na janela de chat.
