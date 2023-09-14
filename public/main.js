@@ -82,16 +82,16 @@ textInput.addEventListener('keyup', (e) => {
 // Eventos socket.io para lidar com mensagens do servidor.
 
 // Quando o servidor confirma que o usuário se conectou com sucesso.
-socket.on('user-ok', (list) => {
+socket.on('user-ok', (connectedUsers, selectedRoom) => {
     loginPage.style.display = 'none';
     chatPage.style.display = 'flex';
     textInput.focus();
 
     // Adiciona uma mensagem de status à janela de chat.
-    addMessage('status', null, 'Conectado!');
+    addMessage('status', null, 'Conectado à sala: ' + selectedRoom);
 
     // Atualiza a lista de usuários e a exibe na interface.
-    userList = list;
+    userList = connectedUsers;
     renderUserList();
 });
 
