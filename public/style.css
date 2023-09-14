@@ -1,6 +1,9 @@
 body {
   margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
+
 ul,
 li {
   margin: 0;
@@ -8,17 +11,34 @@ li {
   list-style: none;
 }
 
+.btn {
+	cursor: pointer;
+	padding: 5px 15px;
+	background-color: #1ecdc5;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  font-size: 15px;
+}
+
 .page {
   height: 100vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #loginPage {
   display: flex;
   background-color: #fff;
 }
+
 #loginNameInput {
   border: 2px solid #000;
   background-color: #ccc;
@@ -85,4 +105,46 @@ li {
   background-color: #ccc;
   outline: 0;
   border: 0;
+}
+
+.join-container {
+	max-width: 500px;
+	margin: 80px auto;
+}
+
+.join-main {
+	padding: 30px 40px;
+	background: var(--dark-color-b);
+}
+
+.join-main p {
+	margin-bottom: 20px;
+}
+
+.join-main .form-control {
+	margin-bottom: 20px;
+}
+
+.join-main label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.join-main input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main select {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main .btn {
+	margin-top: 20px;
+	width: 100%;
 }
