@@ -19,7 +19,8 @@ io.on('connection', (socket) => {
 
     socket.on('join-request', (username, selectedRoom) => {
         socket.username = username; // Define o nome de usuário para o socket
-        socket.room = selectedRoom; // Define a sala para o socket
+        socket.room = selectedRoom;
+        socket.join(selectedRoom);  // Define a sala para o socket
 
         connectedUsers.push(username); // Adiciona o nome de usuário à lista de usuários conectados
 
@@ -30,18 +31,18 @@ io.on('connection', (socket) => {
         console.log(rooms); // Exibe a lista de salas e seus usuários no servidor
 
         socket.emit('user-ok', connectedUsers, selectedRoom); // Envia a lista de usuários conectados e a sala escolhida para o cliente
-        socket.broadcast.emit('list-update', {
+        socket.to(selectedRoom).broadcast.emit('list-update', {
             joined: username,
             room: selectedRoom,
             list: rooms[selectedRoom]
-        }); // Envia uma mensagem para todos os outros clientes informando que um novo usuário se juntou à sala
+        }); 
     });
 
     socket.on('disconnect', () => {
         if (socket.room && rooms[socket.room]) {
             rooms[socket.room] = rooms[socket.room].filter(u => u != socket.username); // Remove o usuário desconectado da sala
             console.log(rooms); // Exibe a lista de salas e seus usuários atualizada no servidor
-            socket.broadcast.emit('list-update', {
+            socket.to(socket.room).broadcast.emit('list-update', {
                 left: socket.username,
                 room: socket.room,
                 list: rooms[socket.room]
@@ -58,6 +59,6 @@ io.on('connection', (socket) => {
             message: txt
         };
 
-        socket.broadcast.emit('show-msg', obj); // Envia a mensagem para todos os outros clientes, exceto o remetente
+        socket.broadcast.to(socket.room).emit('show-msg', obj); // Envia a mensagem para todos os outros clientes, exceto o remetente
     });
 });

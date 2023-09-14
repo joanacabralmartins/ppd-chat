@@ -133,7 +133,6 @@ socket.on('reconnect', () => {
     addMessage('status', null, 'Reconectado!');
 
     if (username != '') {
-        // Se um nome de usuário estiver definido, envia uma solicitação de ingresso novamente.
-        socket.emit('join-request', username);
+        socket.emit('join-request', username, roomSelect.value);
     }
 });
