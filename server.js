@@ -12,19 +12,28 @@ server.listen(3000); // O servidor está ouvindo na porta 3000
 app.use(express.static(path.join(__dirname, 'public'))); // Serve arquivos estáticos a partir do diretório 'public'
 
 let connectedUsers = []; // Inicializa um array vazio para rastrear os usuários conectados
+let rooms = {}; // Inicializa um objeto vazio para rastrear os usuários e suas salas
 
 io.on('connection', (socket) => {
     console.log("Conexão detectada..."); // Exibe uma mensagem no servidor quando um cliente se conecta via WebSocket
 
-    socket.on('join-request', (username) => {
+    socket.on('join-request', (username, selectedRoom) => {
         socket.username = username; // Define o nome de usuário para o socket
-        connectedUsers.push(username); // Adiciona o nome de usuário à lista de usuários conectados
-        console.log(connectedUsers); // Exibe a lista de usuários conectados no servidor
+        socket.room = selectedRoom; // Define a sala para o socket
 
-        socket.emit('user-ok', connectedUsers); // Envia a lista de usuários conectados para o cliente
+        connectedUsers.push(username); // Adiciona o nome de usuário à lista de usuários conectados
+
+        rooms[selectedRoom] = rooms[selectedRoom] || []; // Inicializa a sala se ainda não existir
+        rooms[selectedRoom].push(username); // Adiciona o usuário à sala
+
+        console.log(connectedUsers); // Exibe a lista de usuários conectados no servidor
+        console.log(rooms); // Exibe a lista de salas e seus usuários no servidor
+
+        socket.emit('user-ok', connectedUsers, selectedRoom); // Envia a lista de usuários conectados e a sala escolhida para o cliente
         socket.broadcast.emit('list-update', {
             joined: username,
-            list: connectedUsers
+            room: selectedRoom,
+            list: rooms[selectedRoom]
         }); // Envia uma mensagem para todos os outros clientes informando que um novo usuário se juntou à sala
     });
 
