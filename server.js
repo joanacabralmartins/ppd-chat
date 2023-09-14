@@ -38,13 +38,18 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
+        if (socket.room && rooms[socket.room]) {
+            rooms[socket.room] = rooms[socket.room].filter(u => u != socket.username); // Remove o usuário desconectado da sala
+            console.log(rooms); // Exibe a lista de salas e seus usuários atualizada no servidor
+            socket.broadcast.emit('list-update', {
+                left: socket.username,
+                room: socket.room,
+                list: rooms[socket.room]
+            }); // Informa aos outros clientes da sala que um usuário desconectou
+        }
+
         connectedUsers = connectedUsers.filter(u => u != socket.username); // Remove o usuário desconectado da lista de usuários conectados
         console.log(connectedUsers); // Exibe a lista atualizada de usuários conectados no servidor
-
-        socket.broadcast.emit('list-update', {
-            left: socket.username,
-            list: connectedUsers
-        }); // Informa aos outros clientes que um usuário desconectou
     });
 
     socket.on('send-msg', (txt) => {
